@@ -22,6 +22,7 @@ func main() {
 	r := gin.Default()
 	r.POST("/signup", controller.Signup)
 	r.POST("/login", controller.Login)
+	r.GET("/validate", controller.Validate)
 	
 	
 	r.Run() // listen and serve 
