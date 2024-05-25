@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	controller "github.com/princesp/go-jwt/controllers"
 	"github.com/princesp/go-jwt/initializer"
+	"github.com/princesp/go-jwt/middleware"
 )
 
 func init() {
@@ -22,7 +23,7 @@ func main() {
 	r := gin.Default()
 	r.POST("/signup", controller.Signup)
 	r.POST("/login", controller.Login)
-	r.GET("/validate", controller.Validate)
+	r.GET("/validate", middleware.RequireAuth,controller.Validate)
 	
 	
 	r.Run() // listen and serve 
