@@ -39,3 +39,13 @@ func Signup(c *gin.Context) {
     // Respond
     c.JSON(http.StatusOK, gin.H{})
 }
+
+func login(c *gin.Context) {
+    // Get the email/pw from req body
+    var body struct {
+        Email    string
+        Password string
+    }
+    if err := c.Bind(&body); err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": "Failed to read body"})
+        return}}
